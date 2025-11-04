@@ -51,3 +51,25 @@ Desktop.ini
 .idea
 .vs
 .vscode
+
+# Terraform local state & caches
+**/.terraform/
+**/.terraform.*
+*.tfstate
+*.tfstate.*
+terraform.tfstate
+terraform.tfstate.backup
+
+# Terraform lock and variable files
+.terraform.lock.hcl
+*.tfvars
+*.tfvars.json
+
+# Ignore provider binaries (platform-specific)
+terraform/**/*.zip
+terraform/**/terraform-provider-*
+terraform/**/terraform-provider-*/**
+
+# Ignore module and registry caches
+terraform/**/modules/
+terraform/**/providers/
