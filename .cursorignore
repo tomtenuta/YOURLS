@@ -1,0 +1,10 @@
+# Ignore build artefacts and large blobs
+dist/
+build/
+coverage/
+*.log
+tmp/
+
+# Ignore binary fixtures and dumps
+*.sqlite
+*.dump

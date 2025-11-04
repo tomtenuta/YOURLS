@@ -1,0 +1,31 @@
+---
+description: Engage this whenever the AI is implementing authentication, authorization, input validation, or secure handling of secrets to guarantee HTTPS-only, least-privilege, and privacy-safe design.
+alwaysApply: false
+---
+title: Security & AuthZ
+description: AuthN/AuthZ, input validation, headers, transport.
+rule_type: Always
+globs:
+  - "src/**"
+  - "infra/**"
+alwaysApply: true
+tags: [security, authn, authz]
+---
+
+# Requirements
+- **Transport:** HTTPS only; HSTS on public endpoints.
+- **AuthN:** API keys (prefix + hash), optional JWT/OIDC for admin.
+- **Scopes:** links:read, links:write, analytics:read, keys:manage.
+- **Least privilege**: scope checks at handler boundary.
+- **Input validation** at API boundary; reject on first failure.
+- **Secrets:** never in repo; load via env/secret manager.
+
+# Headers
+- Security headers: CSP (for admin UI), X-Content-Type-Options, X-Frame-Options, Referrer-Policy.
+- CORS: locked to admin origin; public redirect endpoints no CORS needed.
+
+# Logging & PII
+- Hash IP/UA before storage; no raw IPs in logs or DB unless compliance requires it.
+
+# Abuse Protection
+- Tie rate limits to API key and IP; detect token leakage via anomaly patterns.

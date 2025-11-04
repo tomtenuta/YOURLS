@@ -1,0 +1,25 @@
+---
+description: Useful when adding or adjusting metrics, logging, or tracing, ensuring good visibility and alignment with performance SLOs.
+alwaysApply: false
+---
+title: Observability & SLOs
+description: Metrics, logs, traces, and SLO targets.
+rule_type: Auto Attached
+globs:
+  - "src/**"
+  - "infra/**"
+alwaysApply: false
+tags: [observability, metrics, slos]
+---
+
+# Metrics
+- Create success/failure counts; resolve latency histogram; cache hit ratio.
+- Rate-limit throttle counts; webhook delivery results.
+
+# SLOs
+- Resolve p95 < 25ms from cache, < 150ms fallback DB (intra-region).
+- 99.9% monthly availability for resolve endpoint.
+
+# Tracing
+- Trace ID on every request; propagate to async jobs.
+

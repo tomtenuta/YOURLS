@@ -1,0 +1,82 @@
+# VCS / CI
+.git
+.gitignore
+.gitattributes
+.github/
+.gitlab/
+.husky/
+.gitmodules
+
+# OS / editors
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.bak
+.idea/
+.vscode/
+*.iml
+
+# Local env/secrets
+.env
+.env.*
+*.local
+
+# Node (if any)
+node_modules/
+**/node_modules/
+
+# Python (if any)
+__pycache__/
+*.pyc
+
+# Terraform (not needed in runtime image)
+terraform/
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+
+# Build/cache/output
+build/
+dist/
+.tmp/
+tmp/
+.cache/
+cache/
+logs/
+*.log
+
+# Docker compose & local infra
+docker-compose.yml
+docker-compose.*.yml
+Docker-compose.yml
+
+# Tests & docs (not needed at runtime)
+tests/
+**/tests/
+**/*.test.*
+docs/
+*.md
+CHANGELOG.md
+README.md
+readme.html
+
+# Coverage / artifacts
+coverage/
+*.coverage
+nyc_output/
+
+# Misc installers/IDEs
+*.sublime*
+*.code-workspace
+
+# Yarn/npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# KEEP app runtime and vendor code
+# (YOURLS core, includes/vendor, images, user, admin, etc.)
+# Do NOT add `includes/` or `includes/vendor/` here.

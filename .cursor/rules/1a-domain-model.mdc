@@ -1,0 +1,30 @@
+---
+description: Valuable when working with core entities or database relationships (e.g., ShortLink, ApiKey, ClickEvent) to ensure consistency, invariants, and proper lifecycle handling.
+alwaysApply: false
+---
+title: Domain Model & Invariants
+description: Entities, relationships, invariants, and lifecycle.
+rule_type: Auto Attached
+globs:
+  - "src/domain/**"
+  - "docs/domain/**"
+alwaysApply: false
+tags: [domain, invariants]
+---
+
+# Entities
+- **ShortLink**: slug (unique), destination_url (https required by default), owner_id, tags[], created_at, expires_at?, disabled_reason?, last_resolved_at?
+- **ApiKey**: key_id, hashed_secret, owner_id, scopes[], created_at, revoked_at?
+- **ClickEvent**: link_slug, ts, ip_hash, ua_hash, referer?, country?, device_type?
+- **Quota**: owner_id, period (daily/weekly/monthly), max_creates, max_resolves/sec, burst.
+
+# Invariants
+- Slug uniqueness at write time; collision resolution via retry/backoff.
+- Destination URL validation (scheme allowlist, max length, disallow localhost unless explicitly permitted).
+- Deleting a link → soft-delete + tombstone; resolves return 410 Gone.
+- Link resolve path must be O(1) using cache; fallback to DB.
+
+# Lifecycles
+- Creation → validation → persist → cache warm.
+- Resolve → cache hit → 301 → async click enqueue.
+- Expiration/disable → fail resolves with 410/403.

@@ -1,0 +1,20 @@
+---
+description: Engage when building or refining CLI utilities for operational or developer tasks—helps ensure consistent command design, dry-run safety, and output format.
+alwaysApply: false
+---
+title: CLI & Tooling
+description: Project CLI expectations (no code).
+rule_type: Agent Requested
+globs:
+  - "bin/**"
+  - "tools/**"
+alwaysApply: false
+tags: [cli, tooling]
+---
+
+# Commands
+- `links:create`, `links:disable`, `keys:mint`, `keys:revoke`, `quotas:set`.
+- Non-interactive by default; JSON output option.
+
+# Safety
+- Dry-run flags; confirm destructive ops.

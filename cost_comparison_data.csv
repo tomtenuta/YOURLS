@@ -1,0 +1,37 @@
+Category,Subcategory,Item,YOURLS_Monthly,Bitly_Core,Bitly_Growth,Bitly_Premium,Bitly_Enterprise,Notes
+Infrastructure,Compute,ECS Fargate,18.40,0,0,0,0,2 tasks @ 256 vCPU/512MB
+Infrastructure,Networking,Application Load Balancer,25.00,0,0,0,0,Including data transfer
+Infrastructure,Database,RDS MySQL,15.00,0,0,0,0,db.t3.micro estimated
+Infrastructure,Monitoring,CloudWatch Logs,2.50,0,0,0,0,30-day retention
+Infrastructure,DNS,Route 53,1.00,0,0,0,0,Hosted zone + queries
+Infrastructure,Security,SSL Certificate,0.00,0,0,0,0,AWS Certificate Manager
+Infrastructure,Transfer,Data Egress,9.00,0,0,0,0,~100GB/month
+Infrastructure,Support,AWS Developer Support,29.00,0,0,0,0,Developer plan
+Operations,Maintenance,System Administration,1500.00,0,0,0,0,10 hours/month @ $150/hr
+Operations,Security,Security Monitoring,150.00,0,0,0,0,1 hour/month @ $150/hr
+Operations,Backup,Backup Management,75.00,0,0,0,0,0.5 hours/month @ $150/hr
+Subscription,Base,Platform Fee,0,10,29,199,5000,Monthly subscription
+Features,Links,Monthly Limit,999999,100,500,3000,999999,Links per month
+Features,Analytics,Data Retention Days,999999,30,120,365,999999,Historical data access
+Features,API,Rate Limit per Hour,999999,100,500,1000,999999,API calls per hour
+Features,QR Codes,Monthly Limit,999999,5,10,200,999999,QR codes per month
+Features,Users,Included Seats,1,1,1,1,5,User accounts
+TCO,Total,Monthly Cost,1824.90,10.00,29.00,199.00,5000.00,All-in monthly cost
+TCO,Total,Annual Cost,21898.80,120.00,348.00,2388.00,60000.00,Annual total
+Usage_Scenario,2500_links,YOURLS_Cost,1825,0,0,0,0,Low usage scenario
+Usage_Scenario,2500_links,Bitly_Cost,0,0,0,199,0,Would need Premium
+Usage_Scenario,5000_links,YOURLS_Cost,1825,0,0,0,0,Current usage
+Usage_Scenario,5000_links,Bitly_Cost,0,0,0,0,5000,Requires Enterprise
+Usage_Scenario,10000_links,YOURLS_Cost,1900,0,0,0,0,High usage
+Usage_Scenario,10000_links,Bitly_Cost,0,0,0,0,7500,Enterprise with scale
+Usage_Scenario,15000_links,YOURLS_Cost,2100,0,0,0,0,Scale usage
+Usage_Scenario,15000_links,Bitly_Cost,0,0,0,0,10000,Enterprise premium
+Sensitivity,Link_Volume_2x,YOURLS_Impact_%,4,0,0,0,0,Doubling link volume
+Sensitivity,Link_Volume_2x,Bitly_Impact_%,100,100,100,100,50,Plan upgrade required
+Sensitivity,Click_Traffic_2x,YOURLS_Impact_%,2,0,0,0,0,Minimal infrastructure impact
+Sensitivity,Click_Traffic_2x,Bitly_Impact_%,0,0,0,0,0,No cost change
+Sensitivity,Dev_Rate_+50,YOURLS_Impact_%,15,0,0,0,0,Higher operational cost
+Sensitivity,Dev_Rate_+50,Bitly_Impact_%,0,0,0,0,0,No impact
+Break_Even,Links_Month,Threshold,800,0,0,0,0,Break-even point
+Break_Even,Cost_YOURLS,Monthly,1825,0,0,0,0,Fixed cost
+Break_Even,Cost_Bitly,Monthly,29,29,29,199,5000,At break-even volume

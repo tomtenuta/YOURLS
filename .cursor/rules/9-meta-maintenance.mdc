@@ -1,0 +1,17 @@
+---
+description: Useful during rule maintenance or system evolution, ensuring obsolete rules are pruned and new ones include clear purpose, scope, and globs.
+alwaysApply: false
+---
+title: Meta & Maintenance
+description: How to evolve rules and keep them accurate.
+rule_type: Manual
+globs:
+  - ".cursor/rules/**"
+alwaysApply: false
+tags: [meta, maintenance]
+---
+
+# Governance
+- Update rules when architecture or policy changes.
+- Remove stale rules aggressively; smaller is clearer.
+- When adding a new rule, include: purpose, scope, tradeoffs, and globs.

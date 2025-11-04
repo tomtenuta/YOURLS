@@ -1,0 +1,33 @@
+---
+description: Useful whenever the AI needs to reason about overall system structure, responsibilities of layers, or make design choices across the backend, API, cache, and admin boundaries.
+alwaysApply: false
+---
+title: Architecture & System Boundaries
+description: Target architecture, layers, and boundaries for the shortener.
+rule_type: Auto Attached
+globs:
+  - "docs/architecture/**"
+  - "src/**"
+alwaysApply: false
+tags: [architecture, boundaries, layers]
+---
+
+# Target Architecture
+- **Domain:** ShortLink (slug, destination_url, owner_id, created_at, expires_at, disabled), ApiKey, Quota, ClickEvent.
+- **Layers:**
+  - **HTTP API** (REST/JSON first; signed admin endpoints)
+  - **Domain Services** (create/resolve/analytics)
+  - **Persistence** (MySQL primary; Redis for rate-limits + hot lookups)
+  - **Async** (queue for click ingestion, webhook delivery)
+  - **Admin UI** (basic CRUD, insights, API key mgmt)
+- **Compatibility:** Expose a minimal YOURLS-like surface (endpoints + semantics) while keeping a clean internal model.
+
+# Constraints
+- Stateless API nodes.
+- Idempotent write endpoints where applicable.
+- All mutations audited (actor, reason, datetime).
+- Rollout via env-based config flags.
+
+# Edge Policies
+- Slugs must be URL-safe, case-sensitive by default, length 6–12 (configurable).
+- Enforce canonical host for short URLs (301 redirect).

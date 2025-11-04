@@ -1,0 +1,26 @@
+---
+description: Apply for backend development tasks involving PHP code to enforce modern syntax, strong typing, clean architecture, and secure database patterns.
+alwaysApply: false
+---
+title: Backend Standards (PHP)
+description: PHP standards for the YOURLS-style service.
+rule_type: Auto Attached
+globs:
+  - "src/**.php"
+  - "composer.json"
+alwaysApply: false
+tags: [php, backend, standards]
+---
+
+# Targets
+- PHP 8.2+; strict types; PSR-12 style; Composer autoloading.
+- Framework optional; if chosen, minimal dependencies only.
+
+# Conventions
+- Separate controllers/handlers from services and repositories.
+- DTOs for request/response; explicit types; no mixed arrays.
+- Database access via parameterized queries or ORM with prepared statements.
+
+# Performance
+- Cache first for resolve path; Redis TTL tuning; cache stampede protection (singleflight).
+

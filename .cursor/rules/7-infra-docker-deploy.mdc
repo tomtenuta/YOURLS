@@ -1,0 +1,26 @@
+---
+description: Activate for containerization, CI/CD, or deployment infrastructure work, enforcing minimal, reproducible builds and safe rollout strategies.
+alwaysApply: false
+---
+title: Infra, Docker & Deployment
+description: Containerization expectations and rollout.
+rule_type: Auto Attached
+globs:
+  - "infra/**"
+  - "Dockerfile*"
+  - "docker/**"
+alwaysApply: false
+tags: [infra, docker, deploy]
+---
+
+# Containers
+- One image for API, one for workers; minimal base; non-root user.
+
+# Config
+- All runtime config via env; 12-factor friendly.
+- Health endpoints for liveness/readiness; fail fast on misconfig.
+
+# Rollout
+- Blue/green or canary; database migrations run in controlled step.
+- Store build metadata (git SHA, build time) in `/version`.
+

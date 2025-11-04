@@ -1,0 +1,22 @@
+---
+description: Useful when implementing or adjusting Redis caching logic, async job queues, or background workers, ensuring proper key naming, TTLs, and idempotency.
+alwaysApply: false
+---
+title: Cache & Queue
+description: Redis patterns and async pipelines.
+rule_type: Auto Attached
+globs:
+  - "src/**"
+  - "infra/**"
+alwaysApply: false
+tags: [redis, queue, async]
+---
+
+# Redis
+- Key patterns: `sl:{slug} -> dest_url`, `st:{slug} -> status`.
+- TTLs: 24h default; refresh on hit via background job if nearing expiry.
+- Invalidate cache on update/disable/delete.
+
+# Queue
+- Async for click ingestion & webhook delivery.
+- Ensure exactly-once semantics at consumer level (idempotency keys).

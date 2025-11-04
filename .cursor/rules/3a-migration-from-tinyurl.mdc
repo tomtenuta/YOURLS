@@ -1,0 +1,29 @@
+---
+description: Useful during migration or cutover planning from TinyURL—ensures the system mirrors necessary endpoints, supports shadow traffic, and manages a safe rollout.
+alwaysApply: false
+---
+title: Migration Plan — Replacing TinyURL API
+description: Strategy and guardrails to migrate from TinyURL without downtime.
+rule_type: Always
+globs:
+  - "docs/migration/**"
+  - "src/**"
+alwaysApply: true
+tags: [migration, tinyurl, rollout]
+---
+
+# Goals
+- Seamless cutover from TinyURL to our domain with minimal client changes.
+
+# Steps
+1) **Discovery:** Catalog TinyURL endpoints used, request shapes, and auth.
+2) **Parity:** Provide equivalent endpoints (or a proxy shim) under `/v1/compat/tinyurl/*`.
+3) **Shadowing:** Dual-write and shadow-read for a defined period; compare responses & latency.
+4) **Traffic Shifting:** Gradually route create/expand requests to our service (config flags).
+5) **Freeze & Backfill:** Stop creating on TinyURL; import historical links if needed (with slug conflict policy).
+6) **Deprecation:** Announce EOL to clients; remove shim after success window.
+
+# Safety
+- Idempotency on create; retries safe.
+- Clear monitoring of divergence (status codes, expand mismatches).
+

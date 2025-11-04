@@ -1,0 +1,41 @@
+---
+description: Applies during API design or modification, ensuring endpoints follow REST conventions, versioning, consistent error responses, and YOURLS-compatible behaviors.
+alwaysApply: false
+---
+title: API Design (REST)
+description: Public/admin REST endpoints, versioning, error shape.
+rule_type: Auto Attached
+globs:
+  - "src/api/**"
+  - "docs/api/**"
+alwaysApply: false
+tags: [api, rest, versioning]
+---
+
+# Principles
+- **Versioned prefix:** `/v1`.
+- **JSON only** (UTF-8).
+- **Consistent errors:** `{ error: { code, message, details? } }`.
+- **Rate limits** via headers (e.g., `X-RateLimit-Remaining`).
+
+# Core Endpoints (shape only; no code)
+- **Create short link:** `POST /v1/links` → body: { destination_url, slug?, expires_at?, tags? }
+- **Get link:** `GET /v1/links/{slug}`
+- **Update:** `PATCH /v1/links/{slug}`
+- **Disable/Delete:** `DELETE /v1/links/{slug}` (soft-delete)
+- **Expand:** `GET /v1/expand/{slug}` → { destination_url, status }
+- **Bulk Expand:** `POST /v1/expand` → { slugs: [] }
+- **Analytics:** `GET /v1/links/{slug}/stats?from&to&interval`
+- **API Keys:** `POST /v1/keys`, `DELETE /v1/keys/{key_id}`
+
+# YOURLS Compatibility Notes
+- Provide a **compatibility shim** for common YOURLS actions (see 3-integration-yourls-compat.mdc).
+
+# Admin
+- Protected routes for quota, owners, webhooks, feature flags.
+
+# Pagination & Filtering
+- Use cursor-based pagination (`next_cursor`), stable sort keys, and filter by owner, tag, status.
+
+# Idempotency
+- Accept `Idempotency-Key` on create/update endpoints.

@@ -1,0 +1,23 @@
+---
+description: Trigger this when defining or modifying rate limits, spam/malware protections, or abuse mitigation policies related to shortlink creation or resolve traffic.
+alwaysApply: false
+---
+title: Anti-Abuse & Rate Limiting
+description: Shortlink creation/resolve throttles, spam/malware controls.
+rule_type: Auto Attached
+globs:
+  - "src/**"
+  - "infra/**"
+alwaysApply: false
+tags: [abuse, rate-limit, safety]
+---
+
+# Controls
+- **Creation throttle:** per owner_id and IP (configurable bursts).
+- **Resolve throttle:** per IP for pathological patterns.
+- **Blocklists:** domain & path blocklist; disallow known bad hosts.
+- **Malware scan hook** (pluggable) before activation.
+- **Link review queue** for flagged content.
+
+# Fail Behavior
+- Return 429 for throttles; 403 for policy blocks, 410 for tombstones.

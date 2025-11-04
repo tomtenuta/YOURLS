@@ -6,3 +6,15 @@ Disallow: /includes
 Disallow: /js
 Disallow: /user
 
+
+
+curl -sS -H "CF-Access-Client-Id: 33bd99595cecc58361fd3bd465b8df32.access" -H "CF-Access-Client-Secret: af3dc4609ca4d5beaf5f6b9011fd7b35f8edb23ba9582ca687e5d8a6c5dfb4fd" "https://cntently.com/yourls-api.php?action=version&format=json"
+
+curl -i -sS -H "CF-Access-Client-Id: 33bd99595cecc58361fd3bd465b8df32.access" -H "CF-Access-Client-Secret: af3dc4609ca4d5beaf5f6b9011fd7b35f8edb23ba9582ca687e5d8a6c5dfb4fd" "https://api.cntently.com/yourls-api.php?action=version&format=json"
+
+
+
+curl -i -sS \
+-H "CF-Access-Client-Id: 33bd99595cecc58361fd3bd465b8df32.access" \
+-H "CF-Access-Client-Secret: af3dc4609ca4d5beaf5f6b9011fd7b35f8edb23ba9582ca687e5d8a6c5dfb4fd" \
+"https://api.cntently.com/yourls-api.php?action=version&format=json"

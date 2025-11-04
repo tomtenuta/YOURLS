@@ -1,0 +1,21 @@
+---
+description: Engage for admin interface or dashboard work, ensuring privacy-safe UI, correct API usage, and consistent experience for managing links, keys, and analytics.
+alwaysApply: false
+---
+title: Admin UI Guidance
+description: Minimal admin panel for owners and operators.
+rule_type: Agent Requested
+globs:
+  - "admin/**"
+  - "src/ui/**"
+alwaysApply: false
+tags: [frontend, admin, ui]
+---
+
+# Views
+- Link list (search by slug/tag/owner), link detail, create form, analytics overview.
+- API key management, quotas, webhook endpoints.
+
+# UX
+- Non-blocking forms; optimistic updates gated by server confirmation.
+- Respect privacy: never display raw IP or UA.

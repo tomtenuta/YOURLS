@@ -1,0 +1,23 @@
+---
+description: Useful whenever the AI writes or modifies tests or CI setup, to maintain deterministic coverage across unit, integration, contract, and load testing layers.
+alwaysApply: false
+---
+title: Testing Strategy
+description: Unit, integration, contract, and load testing boundaries.
+rule_type: Always
+globs:
+  - "tests/**"
+  - "src/**"
+alwaysApply: true
+tags: [testing, contracts, ci]
+---
+
+# Levels
+- **Unit:** pure functions, validators, mappers.
+- **Integration:** DB, cache, queue interactions.
+- **Contract:** API schemas & compatibility (YOURLS/TinyURL shims).
+- **Load tests:** resolve RPS, cache hit ratio, p95/p99 latency.
+
+# Requirements
+- Deterministic tests; seeded fixtures; hermetic CI.
+- Golden files for response shapes; strict JSON schema checks.

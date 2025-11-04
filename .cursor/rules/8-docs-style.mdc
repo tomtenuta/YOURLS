@@ -1,0 +1,19 @@
+---
+description: Engage when the AI is writing or updating documentation or comments, to maintain clarity, task-oriented examples, and explanatory context.
+alwaysApply: false
+---
+title: Docs & Comment Style
+description: How to write project docs and code comments.
+rule_type: Agent Requested
+globs:
+  - "docs/**"
+  - "src/**"
+alwaysApply: false
+tags: [docs, style]
+---
+
+# Standards
+- Keep docs task-oriented; put examples near the task.
+- Changelogs with human-readable bullets; link to PRs/issues.
+- In code, comments explain **why**, not **what**.
+

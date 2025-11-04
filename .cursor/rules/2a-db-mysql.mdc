@@ -1,0 +1,25 @@
+---
+description: Activate during schema design, migration creation, or SQL optimization to align with indexing, transactional safety, and integrity best practices.
+alwaysApply: false
+---
+title: Database (MySQL)
+description: Schema conventions, migrations, indexes, isolation.
+rule_type: Auto Attached
+globs:
+  - "src/**"
+  - "migrations/**"
+alwaysApply: false
+tags: [mysql, schema, migrations]
+---
+
+# Schema Guidance
+- **Tables:** short_links, api_keys, click_events, quotas, tombstones.
+- **Keys/Indexes:** short_links.slug UNIQUE; lookups optimized for slug and owner_id.
+- **Constraints:** FK integrity; ON DELETE SET NULL for soft relations.
+
+# Migrations
+- Forward-only migrations; rollback via new corrective migration.
+- Online migrations for large tables (chunked backfills).
+
+# Isolation & Locking
+- Use transactions for create/update; avoid long transactions on hot paths.

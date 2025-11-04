@@ -1,0 +1,25 @@
+---
+description: Activate when the AI is bridging compatibility with YOURLS APIs or clients, ensuring request/response semantics and redirects match expected behavior.
+alwaysApply: false
+---
+title: YOURLS Compatibility Layer
+description: Minimal compatibility for common YOURLS actions and semantics.
+rule_type: Agent Requested
+globs:
+  - "src/compat/**"
+  - "docs/compat/**"
+alwaysApply: false
+tags: [yourls, compatibility, migration]
+---
+
+# Scope
+- Provide endpoints or adapters for common YOURLS functions to ease client migration.
+- Map YOURLS-style create/expand calls to our internal API without leaking internals.
+
+# Semantics
+- Maintain 301 redirect behavior.
+- Respect slug collisions and reserved keywords similarly, with config escape hatches.
+
+# Limits
+- We do NOT re-implement full YOURLS plugin ecosystem; only the surface required for your clients.
+

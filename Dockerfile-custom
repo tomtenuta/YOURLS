@@ -1,0 +1,50 @@
+FROM php:8.4-apache
+
+# Runtime deps: match YOURLS template (bcmath, opcache, pdo_mysql, mysqli)
+RUN set -eux; \
+  docker-php-ext-install -j "$(nproc)" bcmath opcache pdo_mysql mysqli; \
+  a2enmod rewrite headers; \
+  rm -rf /var/lib/apt/lists/*
+
+# Listen on 8080 to match ECS/TG
+RUN sed -i 's/^Listen 80$/Listen 8080/' /etc/apache2/ports.conf
+
+# VHost with AllowOverride for YOURLS .htaccess and rewrite to loader
+RUN printf '%s\n' \
+  '<VirtualHost *:8080>' \
+  '  DocumentRoot /var/www/html' \
+  '  <Directory /var/www/html>' \
+  '    Options -Indexes +FollowSymLinks -MultiViews' \
+  '    AllowOverride All' \
+  '    Require all granted' \
+  '  </Directory>' \
+  '</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+
+# Apache hardening: minimal headers & tokens
+RUN printf '%s\n' \
+  'ServerTokens Prod' \
+  'ServerSignature Off' \
+  'Header always unset X-Powered-By' \
+  > /etc/apache2/conf-available/hardening.conf \
+  && a2enconf hardening
+
+# PHP opcache recommended settings (align with upstream template)
+RUN printf '%s\n' \
+  'opcache.memory_consumption=128' \
+  'opcache.interned_strings_buffer=8' \
+  'opcache.max_accelerated_files=4000' \
+  'opcache.revalidate_freq=2' \
+  'opcache.fast_shutdown=1' \
+  > /usr/local/etc/php/conf.d/opcache-recommended.ini
+
+# Copy full app (use .dockerignore to trim build context)
+COPY . /var/www/html/
+
+# If a custom front page exists, make it the default index
+RUN [ -f /var/www/html/index-custom.php ] && cp /var/www/html/index-custom.php /var/www/html/index.php || true
+
+# Ensure www-data owns runtime tree
+RUN chown -R www-data:www-data /var/www/html
+
+EXPOSE 8080
+CMD ["apache2-foreground"]

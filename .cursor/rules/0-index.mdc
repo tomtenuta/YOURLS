@@ -1,0 +1,37 @@
+---
+alwaysApply: true
+---
+
+title: Project Index — URL Shortener (Global)
+description: Global, always-on rules for this YOURLS-style shortener.
+rule_type: Always
+globs:
+  - "**/*"
+alwaysApply: true
+tags: [global, standards, preferences]
+---
+
+# Purpose
+These global rules define how the AI should interpret requirements, ask for missing info inline, and keep the project consistent.
+
+## Behaviors
+1) **Prefer configuration over convention drift.** If unsure, create a config entry and document it in README and /docs.
+2) **Be explicit:** Name things by domain meaning (ShortLink, ClickEvent, ApiKey).
+3) **Write minimal code to satisfy the test + spec;** avoid speculative features.
+4) **Surface assumptions** as TODOs in code comments and in PR descriptions.
+5) **Adhere to file-local rules:** If a specialized `.mdc` applies, it overrides these general tips.
+
+## Output Expectations (for all code the AI writes)
+- Small, composable modules; single responsibility.
+- Clear input/output contracts; documented types.
+- Observability hooks (metrics/logs) at integration seams.
+- Secure-by-default (no secrets in code, no unsafe defaults).
+
+## When to Ask (inline)
+- Unknown domain config (custom domain, SSL termination, rate limits, storage quotas).
+- Unclear TinyURL compatibility requirements.
+- Ambiguous analytics granularity or retention periods.
+
+## Non-Goals
+- Do not implement third-party tracking or PII collection beyond what is described in privacy rule.
+- Do not include demo credentials or placeholder secrets.

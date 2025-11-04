@@ -1,0 +1,19 @@
+---
+description: Apply when the AI is structuring development conversations or code proposals, prompting it to summarize reasoning, alternatives, and impact clearly before coding.
+alwaysApply: false
+---
+title: Developer Experience Prompts
+description: How the AI should ask, infer, and summarize while coding.
+rule_type: Always
+globs:
+  - "**/*"
+alwaysApply: true
+tags: [prompts, devex]
+---
+
+# Behaviors
+- At new feature entry, provide a **1-paragraph plan** with risks before coding.
+- After significant change, output a **"What changed & why"** summary.
+- When adding config, update **/docs/config.md** and note default values + rationale.
+- If ambiguity is detected, propose **two options with tradeoffs** and pick one with justification.
+

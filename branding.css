@@ -1,0 +1,68 @@
+/* Cntently Branding Styles (scoped) */
+
+/* Global UI font */
+body.branding, body.branding .button {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* Header text cleanup and logo swap */
+body.branding header[role="banner"] h1 a span,
+body.branding header[role="banner"] h1 a br { display: none !important; }
+/* Hide any remaining raw text nodes within the link */
+body.branding header[role="banner"] h1 a { font-size: 0 !important; color: transparent !important; }
+body.branding header[role="banner"] img#yourls-logo { content: url("/user/logo.svg") !important; }
+
+/* Color Palette
+   primary: #4E8EFE; accent1: #E4EEFF; accent2: #79A9FF; shadow: #B0C9FF; white: #F9FBFF
+*/
+body.branding { background: #E4EEFF !important; }
+body.branding #wrap { background: #F9FBFF !important; border-color: #4E8EFE !important; box-shadow: none !important; }
+
+body.branding a,
+body.branding a:link,
+body.branding a:active,
+body.branding a:visited { color: #4E8EFE !important; }
+body.branding a:hover { color: #79A9FF !important; }
+body.branding h1 a,
+body.branding h1 a:link,
+body.branding h1 a:active,
+body.branding h1 a:visited { color: #4E8EFE !important; }
+body.branding h1 a:hover span { color: #79A9FF !important; }
+
+body.branding input.text,
+body.branding select,
+body.branding textarea { border-color: #79A9FF !important; }
+body.branding input.button { border-color: #79A9FF !important; }
+body.branding input.primary { border-color: #4E8EFE !important; background: #F9FBFF !important; }
+body.branding input.text:focus,
+body.branding textarea:focus { border-color: #4E8EFE !important; }
+
+body.branding tr.edit-row td { background: #E4EEFF !important; }
+body.branding #new_url div { background: #E4EEFF !important; }
+
+body.branding #footer p { background: #F9FBFF !important; border-color: #4E8EFE !important; }
+
+body.branding a.bookmarklet { border-color: #4E8EFE !important; background-color: #E4EEFF !important; }
+body.branding .notice { border-color: #4E8EFE !important; background: #E4EEFF !important; }
+
+body.branding #tabs ul#headers { border-bottom-color: #E4EEFF !important; }
+body.branding #tabs ul#headers li a { background: #E4EEFF !important; border-color: #E4EEFF !important; }
+body.branding #tabs ul#headers li a:hover { background: #79A9FF !important; }
+body.branding #tabs ul#headers li a.selected { background: #F9FBFF !important; }
+
+body.branding #stats_lines li a { background: #E4EEFF !important; border-color: #E4EEFF !important; }
+body.branding #stats_lines li a:hover { background: #79A9FF !important; }
+body.branding #stats_lines li a.selected { background: #F9FBFF !important; border-color: #E4EEFF !important; border-bottom-color: #F9FBFF !important; }
+
+body.branding #historical_clicks li:hover { background: #E4EEFF !important; }
+
+body.branding table.tblSorter thead tr th,
+body.branding table.tblSorter tfoot tr th,
+body.branding table.tblSorter th.header { background-color: #E4EEFF !important; }
+body.branding table.tblSorter tfoot tr th { background-color: #E4EEFF !important; }
+body.branding table.tblSorter thead tr .tablesorter-headerAsc,
+body.branding table.tblSorter thead tr .tablesorter-headerDesc { background-color: #79A9FF !important; }
+body.branding table.tblSorter tbody tr.normal-row td { background: #F9FBFF !important; }
+body.branding .navigation .nav_link a:hover { border-color: #B0C9FF !important; background: #B0C9FF !important; }
+
+

@@ -1,0 +1,21 @@
+---
+description: Apply when defining or refining outbound event systems or webhook delivery, guaranteeing signature validation, retries, and event schema consistency.
+alwaysApply: false
+---
+title: Webhooks & Events
+description: Outbound events for link lifecycle and analytics batches.
+rule_type: Agent Requested
+globs:
+  - "src/**"
+  - "docs/webhooks/**"
+alwaysApply: false
+tags: [webhooks, events]
+---
+
+# Events
+- link.created, link.updated, link.disabled, link.deleted, analytics.rollup
+
+# Delivery
+- Retries with exponential backoff; signature header (HMAC with webhook secret).
+- Replay protection via timestamp + nonce window.
+

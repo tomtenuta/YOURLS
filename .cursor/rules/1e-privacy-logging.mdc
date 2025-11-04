@@ -1,0 +1,26 @@
+---
+description: Use this when dealing with analytics, telemetry, or logs—it ensures privacy-friendly data handling, anonymization, and retention limits are respected.
+alwaysApply: false
+---
+title: Privacy, Telemetry & Retention
+description: What we collect, anonymization, retention policies.
+rule_type: Auto Attached
+globs:
+  - "src/**"
+  - "docs/privacy/**"
+alwaysApply: false
+tags: [privacy, telemetry, gdpr]
+---
+
+# Collection
+- ClickEvent fields: timestamp, slug, ip_hash, ua_hash, referer?, country?, device_type?.
+- No raw IPs by default; hashing with salt rotation policy.
+
+# Retention
+- ClickEvent raw: 90 days (configurable). Aggregates: 13 months.
+
+# Subject Requests
+- Provide deletion-by-slug and by owner_id for all raw events.
+
+# Observability
+- Structured logs (JSON); redact tokens and URLs with query secrets.
